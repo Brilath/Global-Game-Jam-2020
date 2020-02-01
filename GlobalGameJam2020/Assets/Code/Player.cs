@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField, Range(0f, 15f)]
+    private float maxAcceleration;
     [SerializeField, Range (0f, 15f)]
     private float maxSpeed;
     [SerializeField]
@@ -15,13 +17,16 @@ public class Player : MonoBehaviour
     private float repairRange;
     [SerializeField]
     LayerMask repairMask;
-    [SerializeField]
-    private TapeHolder tapeHolder;
+    [SerializeField] private TapeHolder tapeHolder;
+    [SerializeField] private Vector3 velocity;
+    [SerializeField] private Vector3 desiredVelocity;
+    private Rigidbody2D rb;
 
     private void Awake()
     {
         repairAmount = baseRepairAmount;
         tapeHolder = GetComponent<TapeHolder>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Start is called before the first frame update
@@ -40,9 +45,11 @@ public class Player : MonoBehaviour
 
         playerInput = Vector3.ClampMagnitude(playerInput, 1f);
 
-        Vector3 velocity = new Vector3(playerInput.x, playerInput.y, 0.0f) * maxSpeed;
+        //Vector3 velocity = new Vector3(playerInput.x, playerInput.y, 0.0f) * maxSpeed;
 
-        transform.localPosition += velocity * Time.deltaTime;
+        desiredVelocity = new Vector3(playerInput.x, playerInput.y) * maxSpeed;
+
+        //transform.localPosition += velocity * Time.deltaTime;
 
         if(Input.GetKeyDown(KeyCode.E))
         {
@@ -55,7 +62,23 @@ public class Player : MonoBehaviour
             Debug.Log("Lets try to hurt stuff");
             HurtObject();
         }
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            rb.AddForce(transform.up * 10);
+        }
 
+    }
+
+    private void FixedUpdate()
+    {
+        velocity = rb.velocity;
+
+        float maxSpeedChange = maxAcceleration * Time.deltaTime;
+        velocity.x =
+            Mathf.MoveTowards(velocity.x, desiredVelocity.x, maxSpeedChange);
+        velocity.y =
+            Mathf.MoveTowards(velocity.y, desiredVelocity.y, maxSpeedChange);
+        rb.velocity = velocity;
     }
 
     private void HurtObject()

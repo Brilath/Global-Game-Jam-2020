@@ -15,4 +15,15 @@ public class Sheep : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log($"Sheep hit something {collision.name}");
+        if(collision.gameObject.tag == "Player")
+        {
+
+            var playerRB = collision.GetComponent<Rigidbody2D>();
+            playerRB.AddForce(-playerRB.velocity * 100);
+        }
+    }
 }
