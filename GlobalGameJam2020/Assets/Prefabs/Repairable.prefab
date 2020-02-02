@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4883266519584497449}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.939, y: -0.256, z: -2.57}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -45,12 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a12d184ec0fed84a9167bfc72fc6e68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
-  currentHealth: 2
+  maxHealth: 5
+  currentHealth: 0
   sprites:
-  - {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 21300000, guid: 3a79aeb2ba4d41445992dd400ae27d92, type: 3}
+  - {fileID: 21300000, guid: d20a478272f3a364b87926cf709f7bc1, type: 3}
+  - {fileID: 21300000, guid: 4b95803225b92454db30356813ad8b04, type: 3}
+  - {fileID: 21300000, guid: 0690af76aa667a14baf50dc8a4f9281a, type: 3}
   spriteRenderer: {fileID: 0}
   modifyCooldown: 2
   modifyCountdown: 0
@@ -89,11 +90,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -233476927
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.44062787, g: 0.6037736, b: 0.054111768, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -113,7 +114,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

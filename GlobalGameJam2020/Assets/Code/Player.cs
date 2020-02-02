@@ -18,15 +18,19 @@ public class Player : MonoBehaviour
     [SerializeField]
     LayerMask repairMask;
     [SerializeField] private TapeHolder tapeHolder;
+    [SerializeField] private CakeHolder cakeHolder;
     [SerializeField] private Vector3 velocity;
     [SerializeField] private Vector3 desiredVelocity;
     private Rigidbody2D rb;
+    [SerializeField] private Animator anim;    
 
     private void Awake()
     {
         repairAmount = baseRepairAmount;
         tapeHolder = GetComponent<TapeHolder>();
+        cakeHolder = GetComponent<CakeHolder>();
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     // Start is called before the first frame update
@@ -45,11 +49,8 @@ public class Player : MonoBehaviour
 
         playerInput = Vector3.ClampMagnitude(playerInput, 1f);
 
-        //Vector3 velocity = new Vector3(playerInput.x, playerInput.y, 0.0f) * maxSpeed;
 
         desiredVelocity = new Vector3(playerInput.x, playerInput.y) * maxSpeed;
-
-        //transform.localPosition += velocity * Time.deltaTime;
 
         if(Input.GetKeyDown(KeyCode.E))
         {
@@ -57,7 +58,13 @@ public class Player : MonoBehaviour
             RepairObject();
         }
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            Debug.Log("Lets try to drop cake");
+            cakeHolder.UseCake();
+        }
+
+        if (Input.GetKeyDown(KeyCode.X))
         {
             Debug.Log("Lets try to hurt stuff");
             HurtObject();
@@ -67,6 +74,24 @@ public class Player : MonoBehaviour
             rb.AddForce(transform.up * 10);
         }
 
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 90);
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 180);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.rotation = Quaternion.Euler(0, 0, -90);
+        }
+
+        anim.SetFloat("speed", rb.velocity.magnitude);
     }
 
     private void FixedUpdate()

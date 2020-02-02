@@ -14,8 +14,8 @@ TagManager:
   - 
   - 
   - Repairable
-  - 
-  - 
+  - Sheep
+  - Player
   - 
   - 
   - 
@@ -40,4 +40,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Repairable
+    uniqueID: 4061490369
+    locked: 0
+  - name: Unit
+    uniqueID: 3718612877
     locked: 0

@@ -256,3 +256,16 @@ C:\Users\SurfacePro\Desktop\GitHub\Global-Game-Jam-2020\GlobalGameJam2020\obj\De
 C:\Users\SurfacePro\Desktop\GitHub\Global-Game-Jam-2020\GlobalGameJam2020\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 C:\Users\SurfacePro\Desktop\GitHub\Global-Game-Jam-2020\GlobalGameJam2020\obj\Debug\Assembly-CSharp.dll
 C:\Users\SurfacePro\Desktop\GitHub\Global-Game-Jam-2020\GlobalGameJam2020\obj\Debug\Assembly-CSharp.pdb
+C:\Users\SurfacePro\Desktop\GitHub\Global-Game-Jam-2020\GlobalGameJam2020\Temp\bin\Debug\Unity.2D.Sprite.Editor.dll
+C:\Users\SurfacePro\Desktop\GitHub\Global-Game-Jam-2020\GlobalGameJam2020\Temp\bin\Debug\Unity.2D.Tilemap.Editor.dll
+C:\Users\SurfacePro\Desktop\GitHub\Global-Game-Jam-2020\GlobalGameJam2020\Temp\bin\Debug\Unity.Timeline.Editor.pdb
+C:\Users\SurfacePro\Desktop\GitHub\Global-Game-Jam-2020\GlobalGameJam2020\Temp\bin\Debug\Unity.VSCode.Editor.pdb
+C:\Users\SurfacePro\Desktop\GitHub\Global-Game-Jam-2020\GlobalGameJam2020\Temp\bin\Debug\Unity.TextMeshPro.Editor.pdb
+C:\Users\SurfacePro\Desktop\GitHub\Global-Game-Jam-2020\GlobalGameJam2020\Temp\bin\Debug\UnityEngine.UI.pdb
+C:\Users\SurfacePro\Desktop\GitHub\Global-Game-Jam-2020\GlobalGameJam2020\Temp\bin\Debug\Unity.Timeline.pdb
+C:\Users\SurfacePro\Desktop\GitHub\Global-Game-Jam-2020\GlobalGameJam2020\Temp\bin\Debug\Unity.CollabProxy.Editor.pdb
+C:\Users\SurfacePro\Desktop\GitHub\Global-Game-Jam-2020\GlobalGameJam2020\Temp\bin\Debug\Unity.Rider.Editor.pdb
+C:\Users\SurfacePro\Desktop\GitHub\Global-Game-Jam-2020\GlobalGameJam2020\Temp\bin\Debug\Unity.2D.Sprite.Editor.pdb
+C:\Users\SurfacePro\Desktop\GitHub\Global-Game-Jam-2020\GlobalGameJam2020\Temp\bin\Debug\Unity.2D.Tilemap.Editor.pdb
+C:\Users\SurfacePro\Desktop\GitHub\Global-Game-Jam-2020\GlobalGameJam2020\Temp\bin\Debug\Unity.TextMeshPro.pdb
+C:\Users\SurfacePro\Desktop\GitHub\Global-Game-Jam-2020\GlobalGameJam2020\Temp\bin\Debug\UnityEditor.UI.pdb

@@ -16,6 +16,8 @@ public class Repairable : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         modifyCountdown = 0;
+        maxHealth = sprites.Length - 1;
+        currentHealth = 0;
 
         UpdateSprite();
     }
@@ -58,12 +60,12 @@ public class Repairable : MonoBehaviour
 
     private bool CanModify()
     {
-        return modifyCountdown <= 0;
+        return modifyCountdown <= 0 && (maxHealth != currentHealth);
     }
 
     private void UpdateSprite()
     {
-        int index = Mathf.Clamp(currentHealth - 1, 0, sprites.Length - 1);
+        int index = Mathf.Clamp(currentHealth, 0, sprites.Length - 1);
         spriteRenderer.sprite = sprites[index];
     }
 }
