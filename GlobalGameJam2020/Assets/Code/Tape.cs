@@ -11,10 +11,11 @@ public class Tape : MonoBehaviour
     private Transform spawner;
     [SerializeField, Range(0, 10)] private float flashTimer;
     [SerializeField] private SpriteRenderer flashImage;
+    [SerializeField] private AudioSource audio;
 
     private void Awake()
     {
-
+        audio = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -34,7 +35,7 @@ public class Tape : MonoBehaviour
 
             yield return null;
         }
-        
+
         while (showTime > 0)
         {
             flashImage.enabled = true;
@@ -53,6 +54,7 @@ public class Tape : MonoBehaviour
         if (target == null) return;
 
         target.GetComponent<TapeHolder>().CollectTape(charges);
+        audio.Play();
         Spawn();
     }
 

@@ -4,21 +4,28 @@ using UnityEngine;
 
 public class PathNode
 {
-    private Grid grid;
+    private Grid<PathNode> grid;
 
+    /*
+        G = Walking Cost from the start Node
+        H = Heuristic Cost to reach End Node
+        F = G + H
+    */
     public int gCost;
     public int hCost;
     public int fCost;
 
+    public bool isWalkable;
     public PathNode PriorNode;
     public int X { get; private set; }
     public int Y { get; private set; }
 
-    public PathNode(Grid grid, int x, int y)
+    public PathNode(Grid<PathNode> grid, int x, int y)
     {
         this.grid = grid;
         X = x;
         Y = y;
+        isWalkable = true;
     }
 
     public void CalculateFCost()

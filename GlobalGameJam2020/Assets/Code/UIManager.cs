@@ -9,10 +9,15 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI tapeCount;
     [SerializeField] private TextMeshProUGUI cakeCount;
+    [SerializeField] private TextMeshProUGUI timerText;
 
     private void Awake()
     {
 
+    }
+    private void Update()
+    {
+        timerText.text = GameManager.Instance.TimeLeft.ToString("0");
     }
 
     private void OnEnable()

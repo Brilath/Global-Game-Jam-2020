@@ -7,12 +7,16 @@ public class Player : MonoBehaviour
 {
     [SerializeField, Range(0f, 15f)]
     private float maxAcceleration;
-    [SerializeField, Range (0f, 15f)]
+    [SerializeField, Range(0f, 15f)]
     private float maxSpeed;
     [SerializeField]
     private int baseRepairAmount;
     [SerializeField]
     private int repairAmount;
+    [SerializeField]
+    private float repairSpeed;
+    [SerializeField]
+    private float nextRepair;
     [SerializeField, Range(0, 3)]
     private float repairRange;
     [SerializeField]
@@ -22,7 +26,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Vector3 velocity;
     [SerializeField] private Vector3 desiredVelocity;
     private Rigidbody2D rb;
-    [SerializeField] private Animator anim;    
+    [SerializeField] private Animator anim;
+    [SerializeField] private AudioSource audio;
 
     private void Awake()
     {
@@ -31,12 +36,13 @@ public class Player : MonoBehaviour
         cakeHolder = GetComponent<CakeHolder>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
+        audio = GetComponent<AudioSource>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -52,16 +58,16 @@ public class Player : MonoBehaviour
 
         desiredVelocity = new Vector3(playerInput.x, playerInput.y) * maxSpeed;
 
-        if(Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("Lets try to repair stuff");
             RepairObject();
         }
 
-        if(Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             Debug.Log("Lets try to drop cake");
-            cakeHolder.UseCake();
+            DropCake();
         }
 
         if (Input.GetKeyDown(KeyCode.X))
@@ -69,7 +75,7 @@ public class Player : MonoBehaviour
             Debug.Log("Lets try to hurt stuff");
             HurtObject();
         }
-        if(Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             rb.AddForce(transform.up * 10);
         }
@@ -116,6 +122,12 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void DropCake()
+    {
+        if (cakeHolder.Charges > 0)
+            cakeHolder.UseCake();
+    }
+
     private void RepairObject()
     {
 
@@ -123,13 +135,22 @@ public class Player : MonoBehaviour
         if (repairable == null) return;
         Debug.Log($"Got {repairable.name} to repair");
 
-        if(tapeHolder.Charges > 0)
+        if (CanRepair())
         {
             var repairObject = repairable.GetComponent<Repairable>();
             bool repaired = repairObject.Repair(repairAmount);
             if (repaired)
+            {
                 tapeHolder.UseTape();
+                nextRepair = Time.time + repairSpeed;
+                audio.Play();
+            }
         }
+    }
+
+    private bool CanRepair()
+    {
+        return tapeHolder.Charges > 0 && Time.time >= nextRepair;
     }
 
     private void OnDrawGizmos()

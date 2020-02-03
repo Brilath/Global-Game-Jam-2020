@@ -12,12 +12,13 @@ public class Repairable : MonoBehaviour
     [SerializeField] private float modifyCooldown;
     [SerializeField] private float modifyCountdown;
 
+    public bool Repaired { get { return maxHealth == currentHealth; } }
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         modifyCountdown = 0;
         maxHealth = sprites.Length - 1;
-        currentHealth = 0;
 
         UpdateSprite();
     }
@@ -44,7 +45,7 @@ public class Repairable : MonoBehaviour
             currentHealth -= amount;
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
             UpdateSprite();
-            StartCoroutine(StartModifyCountdown());
+            //StartCoroutine(StartModifyCountdown());
         }
     }
 
@@ -60,7 +61,7 @@ public class Repairable : MonoBehaviour
 
     private bool CanModify()
     {
-        return modifyCountdown <= 0 && (maxHealth != currentHealth);
+        return !Repaired;
     }
 
     private void UpdateSprite()
